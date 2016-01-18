@@ -25,9 +25,7 @@ c) Go to "Build & Run" - tab Debuggers. This has been the most trickiest thing t
 
 You need an arm gdb version **with python scripting support**. At the time (about 9 months back when I write this post) the binaries in Ubuntu repo does not have this option. You can save a lot of time/hassle by checking if this has changed.
 
-Nevertheless if you do need to compile GDB with python support, here is how to do it. Download GDB from the [download archives][1]. I still use GDB-7.6 which seems to work fine, but for this tutorial I have recompiled it for GDB-7.10.
-
-Download GDB from the [download archives](http://ftp.gnu.org/gnu/gdb/). I still use GDB-7.6 which seems to work fine, but for this tutorial I have recompiled it for GDB-7.10.
+Nevertheless if you do need to compile GDB with python support, here is how to do it. Download GDB from the [download archives](http://ftp.gnu.org/gnu/gdb/). I still use GDB-7.6 which seems to work fine, but for this tutorial I have recompiled it for GDB-7.10.
 
 Extract the source archive. Open in terminal and run "./configure --with-python --target=arm-elf". This sets up the make environment for ARM targets with python scripting enabled. Then run make. This takes a while, depending on your system speed. Unfortunately you may be a bit on your own once the compilation stops because of dependency issues. Don't be afraid - this happened to me on my first try too and I figured it out with a bunch of google searches!
 If python fails, make sure to install the python2.x-dev package (check your version no - likely 2.7). Assuming compilation went well, you can find the gdb executable in the main directory.
