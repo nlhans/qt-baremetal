@@ -1,4 +1,5 @@
 This reposistory is an example Qt Creator for use with ARM Cortex m-devices. This readme will describe a tutorial to set this all up. 
+The main reason for creating this reposistory is to answer [http://electronics.stackexchange.com/questions/212018/creating-a-qt-project-for-an-arm-stm32-microcontroller/212077#212077](this question thoroughly on StackExchange Electronics)
 
 Requisites:
 
@@ -6,7 +7,8 @@ Requisites:
 - ARM GCC (Ubuntu: apt-get install gcc-arm-none-eabi)
 - GDB source archive (download from [archive](http://ftp.gnu.org/gnu/gdb/))
 - OpenOCD (Ubuntu: apt-get install openocd)
-I used versions: Qt Creator 3.6.0, ARM 4.8.2-14ubuntu1+6, ARM GDB 7.6/7.10 with python support and OpenOCD 0.7.0.
+
+I used versions: Qt Creator 3.6.0, ARM GCC 4.8.2-14ubuntu1+6, ARM GDB 7.6/7.10 with python support and OpenOCD 0.7.0.
 
 1) Install Qt Creator. Open Help -> About Plugins. Find category Device Support and check BareMetal.
 ![Plugins](https://raw.githubusercontent.com/nlhans/qt-baremetal/master/img/plugin.png)
@@ -21,7 +23,7 @@ b) Go to "Devices". Add a new device, choose Bare Metal and the GDB provider you
 
 c) Go to "Build & Run" - tab Debuggers. This has been the most trickiest thing to do.
 
-You need an arm gdb version **with python scripting support**. At the time, about 9 months back, the binaries in Ubuntu repo does not have this option enabled. You can save a lot of time/hassle to check this first.  For some reason the packages in the Ubuntu repositories did not compile GDB with this option. I am not sure of any binary releases, nevertheless you need to compile GDB from sources with python support. 
+You need an arm gdb version **with python scripting support**. At the time I first figured this out, about 9 months back, the binaries in Ubuntu repo does not have this option enabled. You can save a lot of time/hassle to check this first.  For some reason the packages in the Ubuntu repositories did not compile GDB with this option. I am not sure of any binary releases, nevertheless you need to compile GDB from sources with python support. 
 Download GDB from the [download archives](http://ftp.gnu.org/gnu/gdb/). I still use GDB-7.6 which seems to work fine, but for this tutorial I have recompiled it for GDB-7.10.
 
 Extract the source archive. Open in terminal and run "./configure --with-python --target=arm-elf". This sets up the make environment for ARM targets with python scripting enabled. Then run make. This takes a while, depending on your system speed. Unfortunately you may be a bit on your own once the compilation onces because of dependency issues. Don't be afraid - this happened to me on my first try too and I figured it out with a bunch of google searches!
