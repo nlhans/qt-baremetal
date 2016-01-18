@@ -67,6 +67,7 @@ This starts a gdb server at port 3333 and a telnet server (for OpenOCD commands)
 
 5) Start the debug session. It should program and run now! :)
 
-You can set breakpoints, step through code, even more PC back, watch call stack, variables (locals / watch), and disassembly. I'm really quited please with this, but obviously it lacks a few things like:
+You can set breakpoints, step through code, even move PC back, watch call stack, variables (locals / watch), and disassembly. I'm really quited please with this, but obviously it lacks a few things like:
+
 1) "Register view". Yes it has one, but that's just the CPU registers. I want register view of my peripherals as well.
 2) Download progress or more detailed info about connection state. You need to refer to openocd for this.
