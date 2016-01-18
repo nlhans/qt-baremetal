@@ -1,5 +1,5 @@
 This reposistory is an example Qt Creator for use with ARM Cortex m-devices. This readme will describe a tutorial to set this all up. 
-The main reason for creating this reposistory is to answer [http://electronics.stackexchange.com/questions/212018/creating-a-qt-project-for-an-arm-stm32-microcontroller/212077#212077](this question thoroughly on StackExchange Electronics)
+The main reason for creating this reposistory is to answer [this question thoroughly on StackExchange Electronics](http://electronics.stackexchange.com/questions/212018/creating-a-qt-project-for-an-arm-stm32-microcontroller/212077#212077)
 
 Requisites:
 
