@@ -1,5 +1,6 @@
 import qbs
 import qbs.FileInfo
+import qbs.File
 import "FileExtension.js" as FileExtension
 
 Product {
@@ -119,9 +120,11 @@ Product {
             filePath: "../../" + FileExtension.FileExtension(input.filePath, 1) + "/" + FileInfo.baseName(input.filePath) + ".elf"
         }
         prepare: {
-            var args = [input.filePath, output.filePath];
-            var cmd = new Command("cp", args);
-            cmd.description = "copying elf: "+FileInfo.fileName(input.filePath);
+            var cmd = new JavaScriptCommand();
+            cmd.sourceCode = function() {
+                File.copy(input.filePath, output.filePath)
+            };
+            cmd.description = "copying elf: " + FileInfo.fileName(input.filePath);
             cmd.highlight = "linker";
             return cmd;
         }
@@ -168,11 +171,8 @@ Product {
             filePath: "../../" + FileExtension.FileExtension(input.filePath, 1) + "/" + FileInfo.baseName(input.filePath) + ".lst"
         }
         prepare: {
-            // Compile the tools/elf2lst.c file to executable (gcc elf2lst -o elf2lst)
-            // Then place it in /usr/bin (needs root to do)
-            // This executable is a hack to save the output of objdump -D -S as a file; unfortunately my QBS & UNIX knowledge is limited to this solution
-            var args = [input.filePath, output.filePath];
-            var cmd = new Command("elf2lst", args);
+            var cmd = new Command("arm-none-eabi-objdump", [input.filePath, '-D','-S']);
+            cmd.stdoutFilePath = output.filePath;
             cmd.description = "Disassembly listing for " + cmd.workingDirectory;
             cmd.highlight = "disassembler";
             cmd.silent = true;
