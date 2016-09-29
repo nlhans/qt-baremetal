@@ -28,10 +28,11 @@ Product {
             "-mthumb",
             "-mfloat-abi=hard",
             "-mfpu=fpv4-sp-d16",
-            "-O0",
+            //"-O0",
+            "-g",
             "-DSTM32F40_41xxx",
             "-std=gnu99",
-            "-flto",
+            //"-flto", // standard link-time optimizer
             "-ffunction-sections",
             "-fdata-sections",
             "-Wno-missing-braces"
